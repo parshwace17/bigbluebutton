@@ -407,7 +407,8 @@ class CustomLayout extends Component {
       left = 0;
       width = windowWidth();
     } else {
-      left = !isRTL ? sidebarNavWidth + sidebarContentWidth : 0;
+      // left = !isRTL ? sidebarNavWidth + sidebarContentWidth : 0;
+      left: 0;
       width = windowWidth() - sidebarNavWidth - sidebarContentWidth;
     }
 

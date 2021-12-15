@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withModalMounter } from '/imports/ui/components/modal/service';
 import EndMeetingConfirmationContainer from '/imports/ui/components/end-meeting-confirmation/container';
 import { makeCall } from '/imports/ui/services/api';
-import AboutContainer from '/imports/ui/components/about/container';
+// import AboutContainer from '/imports/ui/components/about/container';
 import SettingsMenuContainer from '/imports/ui/components/settings/container';
 import Button from '/imports/ui/components/button/component';
 import BBBMenu from '/imports/ui/components/menu/component';
@@ -209,13 +209,13 @@ class SettingsDropdown extends PureComponent {
         // description: intl.formatMessage(intlMessages.settingsDesc),
         onClick: () => mountModal(<SettingsMenuContainer />),
       },
-      {
+      /*{
         key: 'list-item-about',
         icon: 'about',
         label: intl.formatMessage(intlMessages.aboutLabel),
         // description: intl.formatMessage(intlMessages.aboutDesc),
         onClick: () => mountModal(<AboutContainer />),
-      },
+      },*/
     );
 
     if (helpButton) {
@@ -291,6 +291,11 @@ class SettingsDropdown extends PureComponent {
             circle
             hideLabel
             className={isDropdownOpen ? styles.hideDropdownButton : styles.btn}
+            style={{
+              border: "1px solid #fff",
+              borderRadius: "50%"
+            }}
+
             // FIXME: Without onClick react proptypes keep warning
             // even after the DropdownTrigger inject an onClick handler
             onClick={() => null}

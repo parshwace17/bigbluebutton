@@ -24,6 +24,7 @@ import MediaService from '/imports/ui/components/media/service';
 import ManyWebcamsNotifier from '/imports/ui/components/video-provider/many-users-notify/container';
 import UploaderContainer from '/imports/ui/components/presentation/presentation-uploader/container';
 import RandomUserSelectContainer from '/imports/ui/components/modal/random-user/container';
+import classnames from 'classnames';
 import NewWebcamContainer from '../webcam/container';
 import PresentationAreaContainer from '../presentation/presentation-area/container';
 import ScreenshareContainer from '../screenshare/container';
@@ -393,6 +394,7 @@ class App extends Component {
             height: actionsBarStyle.height,
             width: actionsBarStyle.width,
             padding: actionsBarStyle.padding,
+            backgroundColor: '#171717'
           }
         }
       >
@@ -474,6 +476,9 @@ class App extends Component {
           <NavBarContainer main="new" />
           {this.renderWebcamsContainer()}
           {shouldShowPresentation ? <PresentationAreaContainer /> : null}
+          <div className={classnames(styles.closed, { [styles.halfopen]: this.props.sidebarNavigationIsOpen || this.props.sidebarContentIsOpen }, { [styles.fullopen]: this.props.sidebarContentIsOpen })}>
+            <img src="https://tutolancer.com/assets/images/tutorac-white.svg" />
+          </div>
           {shouldShowScreenshare ? <ScreenshareContainer /> : null}
           {
             shouldShowExternalVideo

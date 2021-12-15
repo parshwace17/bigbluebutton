@@ -17,9 +17,12 @@
   position: relative;
 }
 
-.layout {
-  @extend %flex-column;
-  background-color: #06172a;
+.layout {	
+  @extend %flex-column;	
+  background-color: #000;	
+}	
+body {	
+  background-color: #000 !important;	
 }
 
 .navbar {
@@ -226,3 +229,6 @@
   position: relative;
   order: 3;
 }
+.closed{ -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; display: flex; align-items: center; justify-content: center; height: 100%;}	
+.closed.halfopen{ margin-left: -240px;}	
+.closed.fullopen{ margin-left: -500px;}

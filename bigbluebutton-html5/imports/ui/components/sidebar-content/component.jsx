@@ -114,8 +114,8 @@ const SidebarContent = (props) => {
       style={{
         position: 'absolute',
         top,
-        left,
-        right,
+        left: right,
+        right: left,
         zIndex,
         width,
         height,

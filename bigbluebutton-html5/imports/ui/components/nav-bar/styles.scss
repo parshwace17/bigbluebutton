@@ -22,7 +22,10 @@
   display: flex;
   flex-direction: row;
 }
-
+.topReverse {	
+  display: flex;	
+  flex-direction: row-reverse;	
+}
 .bottom {
   @include mq($phone-landscape) {
     margin-top: var(--mobile-margin-top);
@@ -41,7 +44,13 @@
 .right {
   flex: 0;
 }
-
+.rightFlex {	
+  display: flex;	
+  flex-direction: row-reverse;	
+  justify-content: center;	
+  align-items: center;	
+  flex: 0	
+}
 .center {
   width: 70%;
   flex: 1;

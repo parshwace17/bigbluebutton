@@ -97,13 +97,13 @@
 
   span:first-child {
     border: 1px solid var(--toolbar-button-color);
-    border-radius: var(--border-size-large);
+    border-radius: var(--border-size-small);
     color: var(--toolbar-button-color);
     font-size: small;
     font-weight: var(--headings-font-weight);
     opacity: 1;
-    padding-right: var(--border-size-large);
-    padding-left: var(--border-size-large);
+    padding-right: var(--border-size-small);
+    padding-left: var(--border-size-small);
   }
 
   span:first-child:hover {

@@ -182,7 +182,7 @@ class ActionsDropdown extends PureComponent {
       });
     }
 
-    if (amIPresenter && allowExternalVideo) {
+    /*if (amIPresenter && allowExternalVideo) {
       actions.push({
         icon: !isSharingVideo ? "external-video" : "external-video_off",
         label: !isSharingVideo ? intl.formatMessage(intlMessages.startExternalVideoLabel)
@@ -199,7 +199,7 @@ class ActionsDropdown extends PureComponent {
         key: this.selectUserRandId,
         onClick: () => mountModal(<RandomUserSelectContainer isSelectedUser={false} />),
       })
-    }
+    }*/
 
     return actions;
   }

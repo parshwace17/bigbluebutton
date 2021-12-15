@@ -271,7 +271,7 @@
 @mixin button-variant($color, $background, $border) {
   color: $color;
   background-color: $background;
-  border: var(--border-size-large) solid transparent;
+  border: var(--border-size-small) solid transparent;
 
   &:focus,
   .buttonWrapper:focus:not([aria-disabled="true"]) & {
@@ -293,14 +293,14 @@
   color: $color;
   background-image: none;
   background-color: transparent;
-  border: var(--border-size-large) solid transparent;
+  border: var(--border-size-small) solid transparent;
 
   &:focus,
   .buttonWrapper:focus & {
     color: $color;
     background-color: $variant;
     background-clip: padding-box;
-    box-shadow: 0 0 0 var(--border-size-large) $color;
+    box-shadow: 0 0 0 var(--border-size-small) $color;
   }
 
   &:hover,

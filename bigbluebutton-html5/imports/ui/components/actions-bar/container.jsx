@@ -25,8 +25,12 @@ const ActionsBarContainer = (props) => {
   const { users } = usingUsersContext;
   const layoutContext = useContext(LayoutContext);
   const { layoutContextState, layoutContextDispatch } = layoutContext;
-  const { output } = layoutContextState;
+  const { input, output } = layoutContextState;
+  const { sidebarContent, sidebarNavigation } = input;
+  const { sidebarNavPanel } = sidebarNavigation;
+  const { sidebarContentPanel } = sidebarContent;
   const { actionBar: actionsBarStyle } = output;
+  const isExpanded = !!sidebarContentPanel || !!sidebarNavPanel;
 
   const currentUser = { userId: Auth.userID, emoji: users[Auth.meetingID][Auth.userID].emoji };
 
@@ -37,6 +41,10 @@ const ActionsBarContainer = (props) => {
         currentUser,
         layoutContextDispatch,
         actionsBarStyle,
+        sidebarNavPanel,
+        sidebarContentPanel,
+        sidebarNavigation,
+        sidebarContent
       }
     }
     />
@@ -54,7 +62,7 @@ export default withTracker(() => ({
   amIModerator: Service.amIModerator(),
   stopExternalVideoShare: ExternalVideoService.stopWatching,
   enableVideo: getFromUserSettings('bbb_enable_video', Meteor.settings.public.kurento.enableVideo),
-  isLayoutSwapped: getSwapLayout()&& shouldEnableSwapLayout(),
+  isLayoutSwapped: getSwapLayout() && shouldEnableSwapLayout(),
   toggleSwapLayout: MediaService.toggleSwapLayout,
   handleTakePresenter: Service.takePresenterRole,
   currentSlidHasContent: PresentationService.currentSlidHasContent(),

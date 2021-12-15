@@ -120,7 +120,7 @@ class ScreenshareComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    const { intl, fullscreenContext, layoutContextDispatch, hidePresentation } = this.props;
+    const { intl, fullscreenContext, layoutContextDispatch, hidePresentation, toggleSwapLayout } = this.props;
     screenshareHasEnded();
     window.removeEventListener('screensharePlayFailed', this.handlePlayElementFailed);
     unsubscribeFromStreamStateChange('screenshare', this.onStreamStateChange);
@@ -143,6 +143,7 @@ class ScreenshareComponent extends React.Component {
         value: false,
       });
     }
+    toggleSwapLayout(layoutContextDispatch);
   }
 
   handleAllowAutoplay() {
@@ -360,12 +361,12 @@ class ScreenshareComponent extends React.Component {
             position: 'absolute',
             display,
             top,
-            left,
-            right,
+            // left,
+            right: left,
             height,
             width,
             zIndex: fullscreenContext ? zIndex : undefined,
-            backgroundColor: '#06172A',
+            backgroundColor: '#000',
           }
         }
       >

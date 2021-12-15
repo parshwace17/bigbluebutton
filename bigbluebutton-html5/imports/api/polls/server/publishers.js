@@ -8,7 +8,7 @@ import AuthTokenValidation, {
 } from '/imports/api/auth-token-validation';
 import { DDPServer } from 'meteor/ddp-server';
 
-Meteor.server.setPublicationStrategy('polls', DDPServer.publicationStrategies.NO_MERGE);
+// Meteor.server.setPublicationStrategy('polls', DDPServer.publicationStrategies.NO_MERGE);
 
 const ROLE_MODERATOR = Meteor.settings.public.user.role_moderator;
 

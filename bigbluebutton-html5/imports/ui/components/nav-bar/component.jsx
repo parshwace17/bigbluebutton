@@ -171,12 +171,12 @@ class NavBar extends Component {
             }
         }
       >
-        <div className={styles.top}>
-          <div className={styles.left}>
+        <div className={styles.topReverse} >
+          <div className={styles.left} style={{ 'display': 'flex', alignItems: 'center' }}>
             {isExpanded && document.dir === 'ltr'
-              && <Icon iconName="left_arrow" className={styles.arrowLeft} />}
+              && <Icon iconName="right_arrow" className={styles.arrowRight} style={{ 'position': 'relative' }} />}
             {!isExpanded && document.dir === 'rtl'
-              && <Icon iconName="left_arrow" className={styles.arrowLeft} />}
+              && <Icon iconName="right_arrow" className={styles.arrowRight} style={{ 'position': 'relative' }} />}
             <Button
               onClick={this.handleToggleUserList}
               ghost
@@ -192,9 +192,9 @@ class NavBar extends Component {
               accessKey={TOGGLE_USERLIST_AK}
             />
             {!isExpanded && document.dir === 'ltr'
-              && <Icon iconName="right_arrow" className={styles.arrowRight} />}
+              && <Icon iconName="left_arrow" className={styles.arrowLeft} style={{ 'position': 'relative', 'order': '-1', marginRight: '4px' }} />}
             {isExpanded && document.dir === 'rtl'
-              && <Icon iconName="right_arrow" className={styles.arrowRight} />}
+              && <Icon iconName="left_arrow" className={styles.arrowLeft} style={{ 'position': 'relative', 'order': '-1', marginRight: '4px' }} />}
           </div>
           <div className={styles.center}>
             <h1 className={styles.presentationTitle}>{presentationTitle}</h1>
@@ -204,7 +204,7 @@ class NavBar extends Component {
               amIModerator={amIModerator}
             />
           </div>
-          <div className={styles.right}>
+          <div className={styles.rightFlex}>
             {ConnectionStatusService.isEnabled() ? <ConnectionStatusButton /> : null}
             <SettingsDropdownContainer amIModerator={amIModerator} />
           </div>

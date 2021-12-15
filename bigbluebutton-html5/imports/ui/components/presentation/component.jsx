@@ -858,12 +858,13 @@ class Presentation extends PureComponent {
         className={styles.presentationContainer}
         style={{
           top: presentationBounds.top,
-          left: presentationBounds.left,
-          right: presentationBounds.right,
+          left: presentationBounds.right,
+          right: presentationBounds.left,
           width: presentationBounds.width,
           height: presentationBounds.height,
           zIndex: fullscreenContext ? presentationBounds.zIndex : undefined,
-          backgroundColor: '#06172A',
+          backgroundColor: '#000'
+          // backgroundColor: '#06172A'
         }}
       >
         {isFullscreen && <PollingContainer />}

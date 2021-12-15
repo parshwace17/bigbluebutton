@@ -9,8 +9,13 @@ import ScreenshareButtonContainer from '/imports/ui/components/actions-bar/scree
 import AudioControlsContainer from '../audio/audio-controls/container';
 import JoinVideoOptionsContainer from '../video-provider/video-button/container';
 import PresentationOptionsContainer from './presentation-options/component';
+import { PANELS, ACTIONS } from '../layout/enums';
 
 class ActionsBar extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleToggleUserList = this.handleToggleUserList.bind(this);
+  }
   render() {
     const {
       amIPresenter,
@@ -36,15 +41,18 @@ class ActionsBar extends PureComponent {
       shortcuts,
       layoutContextDispatch,
       actionsBarStyle,
+      sidebarNavigation,
       isOldMinimizeButtonEnabled,
     } = this.props;
-
+    const toggleBtnClasses = {};
+    toggleBtnClasses[styles.btn] = true;
     return (
       <div
         className={styles.actionsbar}
         style={
           {
             height: actionsBarStyle.innerHeight,
+            justifyContent: 'center'
           }
         }
       >
@@ -68,7 +76,7 @@ class ActionsBar extends PureComponent {
             )
             : null}
         </div>
-        <div className={styles.center}>
+        <div className={styles.center} style={{ 'flex': 'inherit' }}>
           <AudioControlsContainer />
           {enableVideo
             ? (
@@ -80,8 +88,11 @@ class ActionsBar extends PureComponent {
             isMeteorConnected,
           }}
           />
+          <Button onClick={this.handleToggleUserList} className={cx(styles.btn)} icon="user" circle size="lg" color={'default'} ghost
+            hideLabel aria-label="Users" label="Users" />
+
         </div>
-        <div className={styles.right}>
+        <div className={styles.left}>
           {!isOldMinimizeButtonEnabled ||
             (isOldMinimizeButtonEnabled && isLayoutSwapped && !isPresentationDisabled)
             ? (
@@ -100,11 +111,10 @@ class ActionsBar extends PureComponent {
               <Button
                 icon="hand"
                 label={intl.formatMessage({
-                  id: `app.actionsBar.emojiMenu.${
-                    currentUser.emoji === 'raiseHand'
-                      ? 'lowerHandLabel'
-                      : 'raiseHandLabel'
-                  }`,
+                  id: `app.actionsBar.emojiMenu.${currentUser.emoji === 'raiseHand'
+                    ? 'lowerHandLabel'
+                    : 'raiseHandLabel'
+                    }`,
                 })}
                 accessKey={shortcuts.raisehand}
                 color={currentUser.emoji === 'raiseHand' ? 'primary' : 'default'}
@@ -127,6 +137,49 @@ class ActionsBar extends PureComponent {
       </div>
     );
   }
+  handleToggleUserList() {
+    const {
+      sidebarNavigation,
+      sidebarContent,
+      layoutContextDispatch,
+    } = this.props;
+
+    if (sidebarNavigation.isOpen) {
+      if (sidebarContent.isOpen) {
+        layoutContextDispatch({
+          type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+          value: false,
+        });
+        layoutContextDispatch({
+          type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+          value: PANELS.NONE,
+        });
+        layoutContextDispatch({
+          type: ACTIONS.SET_ID_CHAT_OPEN,
+          value: '',
+        });
+      }
+
+      layoutContextDispatch({
+        type: ACTIONS.SET_SIDEBAR_NAVIGATION_IS_OPEN,
+        value: false,
+      });
+      layoutContextDispatch({
+        type: ACTIONS.SET_SIDEBAR_NAVIGATION_PANEL,
+        value: PANELS.NONE,
+      });
+    } else {
+      layoutContextDispatch({
+        type: ACTIONS.SET_SIDEBAR_NAVIGATION_IS_OPEN,
+        value: true,
+      });
+      layoutContextDispatch({
+        type: ACTIONS.SET_SIDEBAR_NAVIGATION_PANEL,
+        value: PANELS.USERLIST,
+      });
+    }
+  }
+
 }
 
 export default withShortcutHelper(ActionsBar, ['raiseHand']);

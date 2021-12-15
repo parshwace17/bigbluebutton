@@ -264,7 +264,7 @@ class UserOptions extends PureComponent {
           icon: 'lock',
         });
 
-        if (dynamicGuestPolicy) {
+        /*if (dynamicGuestPolicy) {
           this.menuItems.push({
             key: this.guestPolicyId,
             icon: 'user',
@@ -273,10 +273,10 @@ class UserOptions extends PureComponent {
             onClick: () => mountModal(<GuestPolicyContainer />),
             dataTest: 'guestPolicyLabel',
           });
-        }
+        }*/
       }
 
-      if (amIModerator) {
+      /*if (amIModerator) {
         this.menuItems.push({
           key: this.saveUsersNameId,
           label: intl.formatMessage(intlMessages.saveUserNames),
@@ -284,7 +284,7 @@ class UserOptions extends PureComponent {
           onClick: this.onSaveUserNames,
           icon: 'download',
         });
-      }
+      }*/
 
       this.menuItems.push({
         key: this.clearStatusId,
@@ -295,7 +295,7 @@ class UserOptions extends PureComponent {
         divider: true,
       });
 
-      if (canCreateBreakout) {
+      /*if (canCreateBreakout) {
         this.menuItems.push({
           key: this.createBreakoutId,
           icon: 'rooms',
@@ -314,9 +314,9 @@ class UserOptions extends PureComponent {
           key: this.createBreakoutId,
           onClick: this.onInvitationUsers,
         });
-      }
+      }*/
 
-      if (amIModerator && CaptionsService.isCaptionsEnabled()) {
+      /*if (amIModerator && CaptionsService.isCaptionsEnabled()) {
         this.menuItems.push({
           icon: 'closed_caption',
           label: intl.formatMessage(intlMessages.captionsLabel),
@@ -324,7 +324,7 @@ class UserOptions extends PureComponent {
           key: this.captionsId,
           onClick: this.handleCaptionsClick,
         });
-      }
+      }*/
       if (amIModerator) {
         if (learningDashboardEnabled === true) {
           this.menuItems.push({
@@ -359,6 +359,7 @@ class UserOptions extends PureComponent {
             className={styles.optionsButton}
             size="sm"
             onClick={() => null}
+            style={{ paddingRight: "5px" }}
           />
         )}
         actions={this.renderMenuItems()}
