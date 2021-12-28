@@ -413,7 +413,7 @@ class UserDropdown extends PureComponent {
       });
     }
 
-    if (allowedToPromote && isMeteorConnected) {
+    /*if (allowedToPromote && isMeteorConnected) {
       actions.push({
         key: 'promote',
         label: intl.formatMessage(messages.PromoteUserLabel),
@@ -423,7 +423,7 @@ class UserDropdown extends PureComponent {
         },
         icon: 'promote',
       });
-    }
+    }*/
 
     if (allowedToDemote && isMeteorConnected) {
       actions.push({
@@ -643,7 +643,7 @@ class UserDropdown extends PureComponent {
               onClick={() => this.setState({ selected: true })}
               className={cx(userItemContentsStyle)}
               style={{ width: '100%', marginLeft: '.5rem' }}
-              onKeyPress={() => {}}
+              onKeyPress={() => { }}
               role="button"
             >
               {contents}
